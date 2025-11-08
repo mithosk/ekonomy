@@ -34,3 +34,5 @@
 /config/*.key
 
 .idea/
+
+.DS_Store
