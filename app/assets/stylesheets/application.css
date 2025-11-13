@@ -1,3 +1,7 @@
+:root {
+    --brand-color: #7d0079;
+}
+
 body {
     position: absolute;
     left: 0;

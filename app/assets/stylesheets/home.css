@@ -1,0 +1,26 @@
+.sidebar {
+    position: absolute;
+    left: 0;
+    width: 80px;
+    top: 0;
+    bottom: 0;
+    background-color: var(--brand-color);
+}
+
+.header {
+    position: absolute;
+    left: 80px;
+    right: 0;
+    top: 0;
+    height: 40px;
+    background-color: #f1f5fa;
+    box-shadow: 0 1px 4px 0 #b8b4b4;
+}
+
+.content {
+    position: absolute;
+    left: 85px;
+    right: 5px;
+    top: 45px;
+    bottom: 0;
+}
