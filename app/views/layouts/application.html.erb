@@ -1,13 +1,12 @@
 <html lang="en">
 <head>
 
-  <title><%= content_for(:title) || "Ekonomy" %></title>
+  <title>Ekonomy</title>
   <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/>
 
   <%= javascript_importmap_tags %>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag controller_path, "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
 
   <%= csp_meta_tag %>
   <%= csrf_meta_tags %>
