@@ -17,10 +17,55 @@
     box-shadow: 0 1px 4px 0 #b8b4b4;
 }
 
-.content {
+.working-content {
     position: absolute;
     left: 85px;
     right: 5px;
     top: 45px;
     bottom: 0;
+}
+
+.square-button {
+    position: absolute;
+    width: 80px;
+    padding-top: 62px;
+    padding-bottom: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.square-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.square-button-selected {
+    color: #ffc4fd;
+}
+
+.square-button-dashboard {
+    background-image: url(/dashboard.svg);
+}
+
+.square-button-detection {
+    top: 85px;
+    background-image: url(/detection.svg);
+}
+
+.square-button-balancing {
+    top: 170px;
+    background-image: url(/balancing.svg);
+}
+
+.square-button-expense {
+    top: 255px;
+    background-image: url(/expense.svg);
+}
+
+.square-button-category {
+    top: 340px;
+    background-image: url(/category.svg);
 }

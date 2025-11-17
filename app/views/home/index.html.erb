@@ -1,0 +1,28 @@
+<script>
+    document.addEventListener('turbo:load', function () {
+        const buttons = document.querySelectorAll('.square-button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(item => item.classList.remove('square-button-selected'));
+                button.classList.add('square-button-selected');
+            });
+        });
+
+        document.querySelector('.square-button-dashboard').click();
+    });
+</script>
+
+<div class="sidebar">
+  <%= link_to "Dashboard", "dashboard", class: "square-button square-button-dashboard", data: { turbo_stream: true } %>
+  <%= link_to "Detections", "detection", class: "square-button square-button-detection", data: { turbo_stream: true } %>
+  <%= link_to "Balancing", "balancing", class: "square-button square-button-balancing", data: { turbo_stream: true } %>
+  <%= link_to "Expenses", "expense", class: "square-button square-button-expense", data: { turbo_stream: true } %>
+  <%= link_to "Categories", "category", class: "square-button square-button-category", data: { turbo_stream: true } %>
+</div>
+
+<div class="header"></div>
+
+<div class="working-content">
+  <div id="working_area"></div>
+</div>
