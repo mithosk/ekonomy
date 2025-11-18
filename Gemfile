@@ -1,23 +1,27 @@
 source "https://rubygems.org"
 
 # Ruby on Rails
-gem "rails", "~> 8.1.1"
-gem "propshaft"
-gem "sqlite3", ">= 2.1"
-gem "puma", ">= 5.0"
+gem "bootsnap", require: false
+gem "image_processing", "~> 1.2"
 gem "importmap-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
 gem "jbuilder"
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem "kamal", require: false
+gem "propshaft"
+gem "puma", ">= 5.0"
+gem "rails", "~> 8.1.1"
+gem "solid_cable"
 gem "solid_cache"
 gem "solid_queue"
-gem "solid_cable"
-gem "bootsnap", require: false
-gem "kamal", require: false
+gem "stimulus-rails"
 gem "thruster", require: false
-gem "image_processing", "~> 1.2"
+gem "turbo-rails"
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 
+# Additional
+gem "dotenv-rails"
+gem "pg"
+
+# Conditional
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "bundler-audit", require: false
