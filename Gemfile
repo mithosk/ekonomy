@@ -21,18 +21,20 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "dotenv-rails"
 gem "pg"
 
-# Conditional
+# Development & Test
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-  gem "bundler-audit", require: false
   gem "brakeman", require: false
+  gem "bundler-audit", require: false
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "rubocop-rails-omakase", require: false
 end
 
+# Only Development
 group :development do
   gem "web-console"
 end
 
+# Only Test
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
