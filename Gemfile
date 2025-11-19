@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 # Ruby on Rails
 gem "bootsnap", require: false
-gem "image_processing", "~> 1.2"
 gem "importmap-rails"
 gem "jbuilder"
 gem "kamal", require: false
