@@ -1,0 +1,35 @@
+.to-remove-for-detection {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #00d600;
+}
+
+.to-remove-for-balancing {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #d60000;
+}
+
+.to-remove-for-expense {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #d68800;
+}
+
+.to-remove-for-category {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #1900d6;
+}

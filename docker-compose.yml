@@ -1,0 +1,30 @@
+services:
+
+  rails:
+    build:
+      context: .
+    ports:
+      - '4004:4004'
+    environment:
+      PORT: 4004
+      SECRET_KEY_BASE: 5a97b880-9e25-43f1-9e2f-c6a42f4a1019
+      DATABASE_URL: postgresql://admin:admin@postgres:5432/primary
+      CABLE_DB_URL: postgresql://admin:admin@postgres:5432/cable
+      CACHE_DB_URL: postgresql://admin:admin@postgres:5432/cache
+      QUEUE_DB_URL: postgresql://admin:admin@postgres:5432/queue
+    restart: always
+
+  postgres:
+    image: postgres:18.0
+    ports:
+      - '7785:5432'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - db:/var/lib/postgres/data
+    restart: always
+
+volumes:
+  db:
+    driver: local

@@ -1,0 +1,79 @@
+name: Publish to Docker Hub
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18.0
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.7'
+          bundler-cache: true
+
+      - name: Setup ENV
+        run: |
+          echo "DATABASE_URL=postgresql://admin:admin@localhost:5432/primary" >> $GITHUB_ENV
+          echo "CABLE_DB_URL=postgresql://admin:admin@localhost:5432/cable" >> $GITHUB_ENV
+          echo "CACHE_DB_URL=postgresql://admin:admin@localhost:5432/cache" >> $GITHUB_ENV
+          echo "QUEUE_DB_URL=postgresql://admin:admin@localhost:5432/queue" >> $GITHUB_ENV
+
+      - name: Setup Database
+        run: |
+          RAILS_ENV=test bin/rails db:setup
+
+      - name: Testing
+        run: |
+          RAILS_ENV=test bin/rails test 
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          context: .
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            mithosk/ekonomy:latest
+            mithosk/ekonomy:${{ github.run_number }}
