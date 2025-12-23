@@ -1,0 +1,71 @@
+<div class="back-column">
+  <a href="/user" class="back-button"></a>
+</div>
+<div class="data-column">
+  <form method="post" action="/user/edit/<%= params[:id] %>">
+    <label>
+      <h5 class="settings-error"><%= @error %></h5>
+      <table class="settings-table">
+        <tr>
+          <td class="settings-table-name">Username</td>
+          <td class="settings-table-value">
+            <input type="text" name="username" value="<%= params.key?(:username) ? params[:username] : @user[:username] %>" class="settings-text"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Password</td>
+          <td class="settings-table-value">
+            <input type="password" name="password" class="settings-text"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Confirm Password</td>
+          <td class="settings-table-value">
+            <input type="password" name="password_confirmation" class="settings-text"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Full name</td>
+          <td class="settings-table-value">
+            <input type="text" name="full_name" value="<%= params.key?(:full_name) ? params[:full_name] : @user[:full_name] %>" class="settings-text"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Role</td>
+          <td class="settings-table-value"><%= @user[:role] %></td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Dashboard</td>
+          <td class="settings-table-value">
+            <input type="checkbox" name="dashboard" <%= params[:dashboard] == "on" || @user[:dashboard] == true ? "checked" : "" %> />
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Detections</td>
+          <td class="settings-table-value">
+            <input type="checkbox" name="detection" <%= params[:detection] == "on" || @user[:detection] == true ? "checked" : "" %> />
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Balancing</td>
+          <td class="settings-table-value">
+            <input type="checkbox" name="balancing" <%= params[:balancing] == "on" || @user[:balancing] == true ? "checked" : "" %> />
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Expenses</td>
+          <td class="settings-table-value">
+            <input type="checkbox" name="expense" <%= params[:expense] == "on" || @user[:expense] == true ? "checked" : "" %> />
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Categories</td>
+          <td class="settings-table-value">
+            <input type="checkbox" name="category" <%= params[:category] == "on" || @user[:category] == true ? "checked" : "" %> />
+          </td>
+        </tr>
+      </table>
+      <input type="submit" value="Save"/>
+    </label>
+  </form>
+</div>

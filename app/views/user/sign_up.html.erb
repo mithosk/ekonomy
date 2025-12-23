@@ -1,0 +1,14 @@
+<div class="sign-box">
+  <h2>Fast Sign Up</h2>
+  <h5 class="sign-error"><%= @error %></h5>
+  <form method="post" action="/user/create">
+    <label>
+      <input type="text" name="username" placeholder="Username" class="sign-text" value="<%= params[:username] %>"/>
+      <input type="password" name="password" placeholder="Password" class="sign-text" value="<%= params[:password] %>"/>
+      <input type="password" name="password_confirmation" placeholder="Confirm Password" class="sign-text" value="<%= params[:password_confirmation] %>"/>
+      <input type="text" name="full_name" placeholder="Full Name" class="sign-text" value="<%= params[:full_name] %>"/>
+      <input type="submit" value="Register"/>
+    </label>
+  </form>
+  <a href="/user/sign-in" class="sign-link">Sign In</a>
+</div>

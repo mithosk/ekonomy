@@ -1,0 +1,11 @@
+<div class="back-column">
+  <a href="/" class="back-button"></a>
+</div>
+<div class="data-column">
+  <% @users.each do |user| %>
+    <a href="/user/detail/<%= user[:user_id] %>" class="item-box <%= user[:role] == 'ADMIN' ? "item-box-admin" : "item-box-operator" %>">
+      <span class="item-username"><%= user[:username] %></span>
+      <span class="item-full-name"><%= user[:full_name] %></span>
+    </a>
+  <% end %>
+</div>

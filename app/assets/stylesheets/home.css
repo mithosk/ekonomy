@@ -17,7 +17,7 @@
     box-shadow: 0 1px 4px 0 #b8b4b4;
 }
 
-.working-content {
+.working {
     position: absolute;
     left: 85px;
     right: 5px;
@@ -25,7 +25,7 @@
     bottom: 0;
 }
 
-.square-button {
+.side-button {
     position: relative;
     display: block;
     width: 80px;
@@ -33,36 +33,70 @@
     padding-bottom: 5px;
     background-repeat: no-repeat;
     background-position: center;
-    color: white;
+    color: #ffffff;
     font-size: 12px;
     text-align: center;
     text-decoration: none;
 }
 
-.square-button:hover {
+.side-button:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.square-button-selected {
+.side-button-selected {
     color: #ffc4fd;
 }
 
-.square-button-dashboard {
+.side-button-dashboard {
     background-image: url(/dashboard.svg);
 }
 
-.square-button-detection {
+.side-button-detection {
     background-image: url(/detection.svg);
 }
 
-.square-button-balancing {
+.side-button-balancing {
     background-image: url(/balancing.svg);
 }
 
-.square-button-expense {
+.side-button-expense {
     background-image: url(/expense.svg);
 }
 
-.square-button-category {
+.side-button-category {
     background-image: url(/category.svg);
+}
+
+.header-button {
+    position: relative;
+    display: block;
+    width: 70px;
+    height: 27px;
+    padding-top: 13px;
+    padding-left: 32px;
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: 9px;
+    color: var(--dark-color);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.header-button:hover {
+    background-color: #d5dae3;
+}
+
+.header-button-user {
+    background-image: url(/user.svg);
+    float: left;
+}
+
+.header-button-me {
+    background-image: url(/me.svg);
+    float: left;
+}
+
+.header-button-logout {
+    background-image: url(/logout.svg);
+    float: right;
 }

@@ -18,6 +18,7 @@ gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Additional
+gem "bcrypt"
 gem "dotenv-rails"
 gem "pg"
 

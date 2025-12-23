@@ -1,0 +1,23 @@
+.sign-box {
+    position: relative;
+    width: 450px;
+    margin: auto;
+    top: 100px;
+    background-color: #ffffff;
+    border-top: 4px solid var(--brand-color);
+    border-bottom: 4px solid var(--brand-color);
+}
+
+.sign-text {
+    width: 390px;
+}
+
+.sign-link {
+    position: relative;
+    left: 363px;
+    bottom: 10px;
+}
+
+.sign-error {
+    color: var(--error-color);
+}
