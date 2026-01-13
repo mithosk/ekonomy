@@ -1,15 +1,16 @@
 <script>
     document.addEventListener('turbo:load', function () {
-        const buttons = document.querySelectorAll('.side-button');
+        const sideButtons = document.querySelectorAll('.side-button');
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                buttons.forEach(item => item.classList.remove('side-button-selected'));
-                button.classList.add('side-button-selected');
+        sideButtons.forEach(sideButton => {
+            sideButton.addEventListener('click', () => {
+                sideButtons.forEach(item => item.classList.remove('side-button-selected'));
+                sideButton.classList.add('side-button-selected');
             });
         });
 
-        document.querySelector('.side-button-dashboard').click();
+        if (sideButtons.length > 0)
+            sideButtons[0].click();
     });
 </script>
 
