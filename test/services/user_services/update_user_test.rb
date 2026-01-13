@@ -176,14 +176,14 @@ class UserServices::UpdateUserTest < Minitest::Test
   end
 
   def test_unit_should_edit_user_without_password
-    @user_instance_mock.expect(:username=, nil, [@faked_username])
-    @user_instance_mock.expect(:full_name=, nil, [@faked_full_name])
+    @user_instance_mock.expect(:username=, nil, [ @faked_username ])
+    @user_instance_mock.expect(:full_name=, nil, [ @faked_full_name ])
     @user_instance_mock.expect(:role, "ADMIN")
-    @user_instance_mock.expect(:dashboard=, nil, [@faked_dashboard])
-    @user_instance_mock.expect(:detection=, nil, [@faked_detection])
-    @user_instance_mock.expect(:balancing=, nil, [@faked_balancing])
-    @user_instance_mock.expect(:expense=, nil, [@faked_expense])
-    @user_instance_mock.expect(:category=, nil, [@faked_category])
+    @user_instance_mock.expect(:dashboard=, nil, [ @faked_dashboard ])
+    @user_instance_mock.expect(:detection=, nil, [ @faked_detection ])
+    @user_instance_mock.expect(:balancing=, nil, [ @faked_balancing ])
+    @user_instance_mock.expect(:expense=, nil, [ @faked_expense ])
+    @user_instance_mock.expect(:category=, nil, [ @faked_category ])
     @user_instance_mock.expect(:save, true)
 
     User.stub(:find_by, @user_instance_mock) do
@@ -206,16 +206,16 @@ class UserServices::UpdateUserTest < Minitest::Test
   end
 
   def test_unit_should_edit_user_with_password
-    @user_instance_mock.expect(:username=, nil, [@faked_username])
-    @user_instance_mock.expect(:password=, nil, [@faked_password])
-    @user_instance_mock.expect(:password_confirmation=, nil, [@faked_password_confirmation])
-    @user_instance_mock.expect(:full_name=, nil, [@faked_full_name])
+    @user_instance_mock.expect(:username=, nil, [ @faked_username ])
+    @user_instance_mock.expect(:password=, nil, [ @faked_password ])
+    @user_instance_mock.expect(:password_confirmation=, nil, [ @faked_password_confirmation ])
+    @user_instance_mock.expect(:full_name=, nil, [ @faked_full_name ])
     @user_instance_mock.expect(:role, "ADMIN")
-    @user_instance_mock.expect(:dashboard=, nil, [@faked_dashboard])
-    @user_instance_mock.expect(:detection=, nil, [@faked_detection])
-    @user_instance_mock.expect(:balancing=, nil, [@faked_balancing])
-    @user_instance_mock.expect(:expense=, nil, [@faked_expense])
-    @user_instance_mock.expect(:category=, nil, [@faked_category])
+    @user_instance_mock.expect(:dashboard=, nil, [ @faked_dashboard ])
+    @user_instance_mock.expect(:detection=, nil, [ @faked_detection ])
+    @user_instance_mock.expect(:balancing=, nil, [ @faked_balancing ])
+    @user_instance_mock.expect(:expense=, nil, [ @faked_expense ])
+    @user_instance_mock.expect(:category=, nil, [ @faked_category ])
     @user_instance_mock.expect(:save, true)
 
     User.stub(:find_by, @user_instance_mock) do
@@ -238,14 +238,14 @@ class UserServices::UpdateUserTest < Minitest::Test
   end
 
   def test_unit_should_save_user_without_error
-    @user_instance_mock.expect(:username=, nil, [@faked_username])
-    @user_instance_mock.expect(:full_name=, nil, [@faked_full_name])
+    @user_instance_mock.expect(:username=, nil, [ @faked_username ])
+    @user_instance_mock.expect(:full_name=, nil, [ @faked_full_name ])
     @user_instance_mock.expect(:role, "ADMIN")
-    @user_instance_mock.expect(:dashboard=, nil, [@faked_dashboard])
-    @user_instance_mock.expect(:detection=, nil, [@faked_detection])
-    @user_instance_mock.expect(:balancing=, nil, [@faked_balancing])
-    @user_instance_mock.expect(:expense=, nil, [@faked_expense])
-    @user_instance_mock.expect(:category=, nil, [@faked_category])
+    @user_instance_mock.expect(:dashboard=, nil, [ @faked_dashboard ])
+    @user_instance_mock.expect(:detection=, nil, [ @faked_detection ])
+    @user_instance_mock.expect(:balancing=, nil, [ @faked_balancing ])
+    @user_instance_mock.expect(:expense=, nil, [ @faked_expense ])
+    @user_instance_mock.expect(:category=, nil, [ @faked_category ])
     @user_instance_mock.expect(:save, true)
 
     User.stub(:find_by, @user_instance_mock) do
@@ -270,17 +270,17 @@ class UserServices::UpdateUserTest < Minitest::Test
   end
 
   def test_unit_should_save_user_with_error
-    @user_instance_mock.expect(:username=, nil, [@faked_username])
-    @user_instance_mock.expect(:full_name=, nil, [@faked_full_name])
+    @user_instance_mock.expect(:username=, nil, [ @faked_username ])
+    @user_instance_mock.expect(:full_name=, nil, [ @faked_full_name ])
     @user_instance_mock.expect(:role, "ADMIN")
-    @user_instance_mock.expect(:dashboard=, nil, [@faked_dashboard])
-    @user_instance_mock.expect(:detection=, nil, [@faked_detection])
-    @user_instance_mock.expect(:balancing=, nil, [@faked_balancing])
-    @user_instance_mock.expect(:expense=, nil, [@faked_expense])
-    @user_instance_mock.expect(:category=, nil, [@faked_category])
+    @user_instance_mock.expect(:dashboard=, nil, [ @faked_dashboard ])
+    @user_instance_mock.expect(:detection=, nil, [ @faked_detection ])
+    @user_instance_mock.expect(:balancing=, nil, [ @faked_balancing ])
+    @user_instance_mock.expect(:expense=, nil, [ @faked_expense ])
+    @user_instance_mock.expect(:category=, nil, [ @faked_category ])
     @user_instance_mock.expect(:save, false)
     @user_instance_mock.expect(:errors, @user_errors_mock)
-    @user_errors_mock.expect(:full_messages, [@faked_error])
+    @user_errors_mock.expect(:full_messages, [ @faked_error ])
 
     User.stub(:find_by, @user_instance_mock) do
       result = UserServices::UpdateUser.call(

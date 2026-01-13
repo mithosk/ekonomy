@@ -12,7 +12,6 @@ module UserServices
       expense:,
       category:,
       session_user_id:)
-
       to_edit_user = User.find_by(id: user_id)
       session_user = User.find_by(id: session_user_id)
 
