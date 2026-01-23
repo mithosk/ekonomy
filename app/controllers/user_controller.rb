@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  before_action :authorize, only: [ :detail, :edit, :index ]
+  before_action :authorize, only: [ :detail, :index, :save ]
 
   def authenticate
     result = UserServices::AuthenticateUser.call(
@@ -11,7 +11,7 @@ class UserController < ApplicationController
       session["user_id"] = result[:user_id]
       redirect_to "/"
     else
-      render :sign_in, status: :unprocessable_entity
+      render :sign_in, status: :forbidden
     end
   end
 
@@ -28,7 +28,7 @@ class UserController < ApplicationController
       redirect_to "/"
     else
       @error = result[:error]
-      render :sign_up, status: :unprocessable_entity
+      render :sign_up, status: :forbidden
     end
   end
 
@@ -36,32 +36,41 @@ class UserController < ApplicationController
     @user = UserServices::GetUserDetail.call(user_id: params[:id])
   end
 
-  def edit
-    result = UserServices::UpdateUser.call(
-      user_id: params[:id].to_i,
-      username: params[:username],
-      password: params[:password],
-      password_confirmation: params[:password_confirmation],
-      full_name: params[:full_name],
-      dashboard: params[:dashboard] == "on",
-      detection: params[:detection] == "on",
-      balancing: params[:balancing] == "on",
-      expense: params[:expense] == "on",
-      category: params[:category] == "on",
-      session_user_id: session["user_id"].to_i,
-    )
+  def index
+    @users = UserServices::GetUserList.call
+  end
+
+  def save
+    if params[:submit] == "Edit"
+      result = UserServices::UpdateUser.call(
+        user_id: params[:id].to_i,
+        username: params[:username],
+        password: params[:password],
+        password_confirmation: params[:password_confirmation],
+        full_name: params[:full_name],
+        dashboard: params[:dashboard] == "on",
+        detection: params[:detection] == "on",
+        balancing: params[:balancing] == "on",
+        expense: params[:expense] == "on",
+        category: params[:category] == "on",
+        session_user_id: session["user_id"].to_i,
+      )
+    end
+
+    if params[:submit] == "Remove"
+      result = UserServices::DeleteUser.call(
+        user_id: params[:id].to_i,
+        session_user_id: session["user_id"].to_i
+      )
+    end
 
     if result[:error] == nil
       redirect_to "/user"
     else
       @error = result[:error]
       @user = UserServices::GetUserDetail.call(user_id: params[:id])
-      render :detail, status: :unprocessable_entity
+      render :detail, status: :forbidden
     end
-  end
-
-  def index
-    @users = UserServices::GetUserList.call
   end
 
   def sign_in

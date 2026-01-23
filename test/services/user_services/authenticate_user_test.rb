@@ -3,14 +3,15 @@ class UserServices::AuthenticateUserTest < Minitest::Test
     @user_class_mock = Minitest::Mock.new
     @user_instance_mock = Minitest::Mock.new
 
+    @faked_user_id = SecureRandom.random_number
     @faked_username = SecureRandom.uuid
     @faked_password = SecureRandom.uuid
-    @faked_user_id = SecureRandom.random_number
+    @faked_full_name = SecureRandom.uuid
   end
 
   def test_unit_should_get_user_by_username
-    @user_instance_mock.expect(:id, @faked_user_id)
     @user_instance_mock.expect(:authenticate, @user_instance_mock, [ Object ])
+    @user_instance_mock.expect(:id, @faked_user_id)
     @user_class_mock.expect(:find_by, @user_instance_mock, [ { username: @faked_username } ])
 
     User.stub(:find_by, ->(params) { @user_class_mock.find_by(params) }) do

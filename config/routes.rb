@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   post "user/authenticate", to: "user#authenticate"
   post "user/create", to: "user#create"
   get "user/detail/:id", to: "user#detail"
-  post "user/edit/:id", to: "user#edit"
   get "user", to: "user#index"
+  post "user/save/:id", to: "user#save"
   get "user/sign-in", to: "user#sign_in"
   get "user/sign-up", to: "user#sign_up"
 end

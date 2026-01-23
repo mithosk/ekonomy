@@ -2,14 +2,14 @@
   <a href="/user" class="back-button"></a>
 </div>
 <div class="data-column">
-  <form method="post" action="/user/edit/<%= params[:id] %>">
+  <form method="post" action="/user/save/<%= params[:id] %>" data-controller="form">
     <label>
       <h5 class="settings-error"><%= @error %></h5>
       <table class="settings-table">
         <tr>
           <td class="settings-table-name">Username</td>
           <td class="settings-table-value">
-            <input type="text" name="username" value="<%= params.key?(:username) ? params[:username] : @user[:username] %>" class="settings-text"/>
+            <input type="text" name="username" value="<%= request.post? ? params[:username] : @user[:username] %>" class="settings-text"/>
           </td>
         </tr>
         <tr>
@@ -27,7 +27,7 @@
         <tr>
           <td class="settings-table-name">Full name</td>
           <td class="settings-table-value">
-            <input type="text" name="full_name" value="<%= params.key?(:full_name) ? params[:full_name] : @user[:full_name] %>" class="settings-text"/>
+            <input type="text" name="full_name" value="<%= request.post? ? params[:full_name] : @user[:full_name] %>" class="settings-text"/>
           </td>
         </tr>
         <tr>
@@ -37,35 +37,36 @@
         <tr>
           <td class="settings-table-name">Dashboard</td>
           <td class="settings-table-value">
-            <input type="checkbox" name="dashboard" <%= params[:dashboard] == "on" || @user[:dashboard] == true ? "checked" : "" %> />
+            <input type="checkbox" name="dashboard" <%= checkbox_state(checkbox_name: "dashboard", db_flag: @user[:dashboard]) %> />
           </td>
         </tr>
         <tr>
           <td class="settings-table-name">Detections</td>
           <td class="settings-table-value">
-            <input type="checkbox" name="detection" <%= params[:detection] == "on" || @user[:detection] == true ? "checked" : "" %> />
+            <input type="checkbox" name="detection" <%= checkbox_state(checkbox_name: "detection", db_flag: @user[:detection]) %> />
           </td>
         </tr>
         <tr>
           <td class="settings-table-name">Balancing</td>
           <td class="settings-table-value">
-            <input type="checkbox" name="balancing" <%= params[:balancing] == "on" || @user[:balancing] == true ? "checked" : "" %> />
+            <input type="checkbox" name="balancing" <%= checkbox_state(checkbox_name: "balancing", db_flag: @user[:balancing]) %> />
           </td>
         </tr>
         <tr>
           <td class="settings-table-name">Expenses</td>
           <td class="settings-table-value">
-            <input type="checkbox" name="expense" <%= params[:expense] == "on" || @user[:expense] == true ? "checked" : "" %> />
+            <input type="checkbox" name="expense" <%= checkbox_state(checkbox_name: "expense", db_flag: @user[:expense]) %> />
           </td>
         </tr>
         <tr>
           <td class="settings-table-name">Categories</td>
           <td class="settings-table-value">
-            <input type="checkbox" name="category" <%= params[:category] == "on" || @user[:category] == true ? "checked" : "" %> />
+            <input type="checkbox" name="category" <%= checkbox_state(checkbox_name: "category", db_flag: @user[:category]) %> />
           </td>
         </tr>
       </table>
-      <input type="submit" value="Save"/>
+      <input type="submit" name="submit" value="Edit"/>
+      <input type="submit" name="submit" value="Remove" data-action="click->form#confirm"/>
     </label>
   </form>
 </div>
