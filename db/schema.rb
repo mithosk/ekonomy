@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_24_105510) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_04_231242) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_24_105510) do
   create_table "years", force: :cascade do |t|
     t.integer "number", null: false
     t.integer "target", null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["number"], name: "index_years_on_number", unique: true
   end
 end

@@ -1,0 +1,29 @@
+<div class="back-column">
+  <a href="/year" class="back-button"></a>
+</div>
+<div class="data-column">
+  <form method="post" action="/year/save/<%= params[:id] %>" data-controller="form">
+    <label>
+      <h5 class="settings-error"><%= @error %></h5>
+      <table class="settings-table">
+        <tr>
+          <td class="settings-table-name">Number</td>
+          <td class="settings-table-value"><%= @year[:number] %></td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Target</td>
+          <td class="settings-table-value">
+            <input type="text" name="target" value="<%= request.post? ? params[:target] : @year[:target] %>" class="settings-text"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="settings-table-name">Updated At</td>
+          <td class="settings-table-value"><%= @year[:updated_at].strftime("%e %B %Y, %H:%M") %></td>
+        </tr>
+      </table>
+      <br>
+      <input type="submit" name="submit" value="Edit"/>
+      <input type="submit" name="submit" value="Switch" data-action="click->form#confirm"/>
+    </label>
+  </form>
+</div>

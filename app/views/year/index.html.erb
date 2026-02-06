@@ -1,0 +1,10 @@
+<div class="back-column">
+  <a href="/" class="back-button"></a>
+</div>
+<div class="data-column">
+  <% @years.each do |year| %>
+    <a href="/year/detail/<%= year[:year_id] %>" class="item-box">
+      <span class="item-year"><%= year[:number] %></span>
+    </a>
+  <% end %>
+</div>

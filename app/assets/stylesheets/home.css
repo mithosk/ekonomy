@@ -72,8 +72,8 @@
     display: block;
     width: 70px;
     height: 27px;
-    padding-top: 13px;
     padding-left: 32px;
+    padding-top: 13px;
     background-repeat: no-repeat;
     background-position-x: 5px;
     background-position-y: 9px;
@@ -93,6 +93,11 @@
 
 .header-button-me {
     background-image: url(/me.svg);
+    float: left;
+}
+
+.header-button-year {
+    background-image: url(/year.svg);
     float: left;
 }
 

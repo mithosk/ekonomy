@@ -9,6 +9,7 @@ class UserController < ApplicationController
 
     if result[:user_id]
       session["user_id"] = result[:user_id]
+      session["year_id"] = YearServices::GetDefaultYear.call(ref_date: Date.today)[:year_id]
       redirect_to "/"
     else
       render :sign_in, status: :forbidden
@@ -25,6 +26,7 @@ class UserController < ApplicationController
 
     if result[:user_id]
       session["user_id"] = result[:user_id]
+      session["year_id"] = YearServices::GetDefaultYear.call(ref_date: Date.today)[:year_id]
       redirect_to "/"
     else
       @error = result[:error]

@@ -18,4 +18,8 @@ Rails.application.routes.draw do
   post "user/save/:id", to: "user#save"
   get "user/sign-in", to: "user#sign_in"
   get "user/sign-up", to: "user#sign_up"
+
+  get "year/detail/:id", to: "year#detail"
+  get "year", to: "year#index"
+  post "year/save/:id", to: "year#save"
 end

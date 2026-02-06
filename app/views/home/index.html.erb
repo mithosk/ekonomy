@@ -25,6 +25,7 @@
 <div class="header">
   <a href="/user" class="header-button header-button-user">Users</a>
   <a href="/user/detail/<%= session[:user_id] %>" class="header-button header-button-me">Me</a>
+  <a href="/year" class="header-button header-button-year"><%= @year[:number] %></a>
   <a href="/user/sign-in" class="header-button header-button-logout">Logout</a>
 </div>
 
